@@ -10,7 +10,8 @@ from secret import api_key
 
 async def main():
 
-    client = TonCenterClient(api_key)
+    # client = TonCenterClient(api_key, base_url="https://toncenter.com/api/v2/")
+    client = TonCenterClient(base_url="https://toncenter.com/api/v2/")
 
     wallet = Wallet(provider=client, mnemonics=my_mnemonics.mnemonics_v4, version='v4r2')
 

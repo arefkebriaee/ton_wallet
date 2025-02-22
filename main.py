@@ -8,6 +8,7 @@ from pytonlib.client import TonlibClient
 
 import my_mnemonics
 from ton_config import ton_conf
+import os
 
 
 def create_new_wallet():
@@ -24,8 +25,9 @@ async def get_client():
     # try:
     ton_config = requests.get('https://ton.org/global.config.json').json()
         # create keystore directory for tonlib
-    keystore_dir = '/tmp/ton_keystore'
-    Path(keystore_dir).mkdir(parents=True, exist_ok=True)
+    # keystore_dir = '/tmp/ton_keystore'
+    keystore_dir = ""
+    # Path(keystore_dir).mkdir(parents=True, exist_ok=True)
 
 
     # init TonlibClient
@@ -56,7 +58,9 @@ async def deploy_wallet():
 
 if __name__ == '__main__':
 
-    asyncio.run(deploy_wallet())
+    client = asyncio.run(get_client())
+    print()
+    # asyncio.run(deploy_wallet())
     # # mnemonics, pub_k, priv_k, wallet = create_new_wallet()
     # # print(f"mnemonics: {mnemonics}")
     # # print(f"pub_k: {pub_k}")
